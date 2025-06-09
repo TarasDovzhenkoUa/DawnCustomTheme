@@ -3605,3 +3605,7 @@ details-disclosure > details {
   color: #333333;
   margin-bottom: 20px;
 }
+
+.product-grid-container {
+  margin-bottom: 32px;
+}
