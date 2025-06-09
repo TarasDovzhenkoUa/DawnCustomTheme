@@ -77,56 +77,57 @@
       </div>
       {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
 
-      <div class="custom-product-card__quick-add quick-add no-js-hidden">
-        {%- liquid
-          assign qty_rules = false
-          if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
-            assign qty_rules = true
-          endif
+    
+    </div>
+    <div class="custom-product-card__quick-add quick-add no-js-hidden">
+      {%- liquid
+        assign qty_rules = false
+        if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
+          assign qty_rules = true
+        endif
+      -%}
+      <product-form data-section-id="{{ section.id }}">
+        {%- form 'product',
+          card_product,
+          id: product_form_id,
+          class: 'form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
         -%}
-        <product-form data-section-id="{{ section.id }}">
-          {%- form 'product',
-            card_product,
-            id: product_form_id,
-            class: 'form',
-            novalidate: 'novalidate',
-            data-type: 'add-to-cart-form'
-          -%}
-            <input
-              type="hidden"
-              name="items[0]id"
-              value="{{ card_product.selected_or_first_available_variant.id }}"
-              class="product-variant-id"
-            >
-            <button
-              id="{{ product_form_id }}-submit"
-              type="submit"
-              name="add"
-              class="custom-product-card__btn"
-              aria-haspopup="dialog"
-              aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-              aria-live="polite"
-              data-sold-out-message="true"
-              {% unless card_product.selected_or_first_available_variant.available %}
-                disabled
-              {% endunless %}
-            >
-              <span class="custom-product-card__icon-add icon-plus">
-                {% if card_product.selected_or_first_available_variant.available %}
-                  Add to Cart
-                {% else %}
-                  Sold Out
-                {% endif %}
-                {% render 'icon-dropdown-plus' %}
-              </span>
-              <span class="custom-product-card__icon-check icon-check hidden">
-                {{- 'icon-checkmark.svg' | inline_asset_content -}}
-              </span>
-              {%- render 'loading-spinner' -%}
-            </button>
-          {%- endform -%}
-        </product-form>
-      </div>
+          <input
+            type="hidden"
+            name="items[0]id"
+            value="{{ card_product.selected_or_first_available_variant.id }}"
+            class="product-variant-id"
+          >
+          <button
+            id="{{ product_form_id }}-submit"
+            type="submit"
+            name="add"
+            class="custom-product-card__btn"
+            aria-haspopup="dialog"
+            aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+            aria-live="polite"
+            data-sold-out-message="true"
+            {% unless card_product.selected_or_first_available_variant.available %}
+              disabled
+            {% endunless %}
+          >
+            <span class="custom-product-card__icon-add icon-plus">
+              {% if card_product.selected_or_first_available_variant.available %}
+                Add to Cart
+              {% else %}
+                Sold Out
+              {% endif %}
+              {% render 'icon-dropdown-plus' %}
+            </span>
+            <span class="custom-product-card__icon-check icon-check hidden">
+              {{- 'icon-checkmark.svg' | inline_asset_content -}}
+            </span>
+            {%- render 'loading-spinner' -%}
+          </button>
+        {%- endform -%}
+      </product-form>
     </div>
   </div>
 {%- endif -%}
