@@ -288,3 +288,8 @@
   max-width: 220px;
   gap: 8px;
 }
+
+.custom-product-card .quick-add {
+  position: absolute;
+  margin: 0;
+}

@@ -96,9 +96,12 @@
         -%}
           <input
             type="hidden"
-            name="items[0]id"
+            name="id"
             value="{{ card_product.selected_or_first_available_variant.id }}"
             class="product-variant-id"
+            {% if card_product.selected_or_first_available_variant.available == false %}
+              disabled
+            {% endif %}
           >
           <button
             id="{{ product_form_id }}-submit"
@@ -109,9 +112,9 @@
             aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
             aria-live="polite"
             data-sold-out-message="true"
-            {% unless card_product.selected_or_first_available_variant.available %}
+            {% if card_product.selected_or_first_available_variant.available == false %}
               disabled
-            {% endunless %}
+            {% endif %}
           >
             <span class="custom-product-card__icon-add icon-plus">
               {% if card_product.selected_or_first_available_variant.available %}
