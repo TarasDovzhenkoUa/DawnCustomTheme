@@ -16,7 +16,6 @@
   width: 100%;
   display: block;
   text-decoration: none;
-  max-height: 212px;
   height: 100%;
   overflow: hidden;
   transition-duration: 250ms;
@@ -27,7 +26,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  max-height: 212px;
+  max-height: 280px;
   height: 100%;
   object-fit: contain;
   transition-duration: 250ms;
@@ -43,7 +42,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
-  letter-spacing: -4%;
+  letter-spacing: -1px;
 }
 
 .custom-product-card__heading {
@@ -144,6 +143,7 @@
 .custom-product-card__content-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   flex-direction: row;
   gap: 5px;
 }
@@ -158,11 +158,10 @@
 
 .price__regular .price-item--regular {
   font-family: "Golos Text", sans-serif;
-  font-family: Golos Text;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 28px;
   line-height: 28px;
-  letter-spacing: -4%;
+  letter-spacing: -1px;
   color: #333333;
 }
 
@@ -284,6 +283,6 @@
 .custom-product-card__content-top {
   display: flex;
   align-items: flex-end;
-  max-width: 230px;
+  max-width: 220px;
   gap: 8px;
 }
