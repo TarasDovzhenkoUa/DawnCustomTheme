@@ -96,3 +96,35 @@
     min-height: 20rem;
   }
 }
+
+.collection-hero__text-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 52px;
+}
+
+h1.collection-hero__title {
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  font-size: 68px;
+  line-height: 64px;
+  letter-spacing: -3px;
+  color: #333333;
+  max-width: 465px;
+}
+
+.collection-hero__description p {
+  font-family: "Golos Text", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -1px;
+  color: #333333;
+  max-width: 310px;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-hero__text-wrapper {
+    flex-direction: column;
+  }
+}
